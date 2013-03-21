@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<ruleset name="Symfony">
+ <description>The Symfony PSR-2 coding standard.</description>
+
+ <!-- There should not be any code in the bundle Resources directory. -->
+ <exclude-pattern>*/Resources/*</exclude-pattern>
+
+ <!-- 2. General -->
+
+ <!-- Include the whole PSR-2 standard -->
+ <rule ref="PSR2">
+  <exclude name="PEAR.Functions.FunctionCallSignature"/>
+ </rule>
+
+<!-- Allow fluent interface style with the semi-colon on it's own line -->
+ <rule ref="Symfony.Functions.FunctionCallSignature">
+  <properties>
+   <property name="allowMultipleArguments" value="false"/>
+  </properties>
+ </rule>
+
+ <rule ref="Symfony.Formatting.BlankLineBeforeReturn"/>
+ <rule ref="Symfony.NamingConventions.InterfaceSuffix"/>
+</ruleset>
+
