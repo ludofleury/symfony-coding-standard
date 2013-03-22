@@ -1,0 +1,13 @@
+language: php
+php:
+  - 5.4
+  - 5.5
+
+before_script:
+  - composer install --dev
+  - mkdir -p vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Symfony
+  - cp -R Sniffs/ vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Symfony/Sniffs/
+  - cp -R Tests/ vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Symfony/Tests/
+
+script:
+  - ./vendor/squizlabs/php_codesniffer/scripts/phpcs ./vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Symfony/Sniffs --standard=PEAR --report=summary -np
