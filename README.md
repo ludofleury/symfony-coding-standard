@@ -34,7 +34,7 @@ Yet, this ruleset rely on CodeSniffer PSR-1 & 2 sniffs and add Symfony standard 
         phpcs path/to/my/file.php
 
 
-## Customisations
+## Pragmatic & opinionated Customisations
 
 ### Allows fluent-interface chained calls syntax
 
@@ -74,6 +74,10 @@ The unit-tests are run from within the PHP_CodeSniffer directory
 ## Credit
 
 [OpenSky](https://github.com/opensky) for the [Symfony2 coding standard](https://github.com/opensky/Symfony2-coding-standard)
+
+## Issue
+
+If you spot any missing standard/conventions and don't want to contribute, please open an issue. It will be at least added to this readme.
 
 ## Licence
 
