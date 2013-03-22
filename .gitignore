@@ -1,0 +1,44 @@
+# Dependencies
+/vendor/
+/composer.phar
+composer.lock
+
+# Build & Tests
+/build/
+.atoum.php
+phpunit.xml
+behat.yml
+
+# OSX
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+.Spotlight-V100
+.Trashes
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Netbeans
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+# Phpstorm
+.idea/
+
+# SublimeText
+*.sublime-workspace
+
+# TextMate
+*.tmproj
+*.tmproject
+tmtags
