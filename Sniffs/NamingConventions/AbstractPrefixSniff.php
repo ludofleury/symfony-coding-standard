@@ -4,11 +4,11 @@
  *
  * PHP version 5
  *
- * @category  PHP
- * @package   PHP_CodeSniffer
- * @author    Ludovic Fleury <ludo.fleury@gmail.com>
- * @license   MIT License
- * @link      https://github.com/ludofleury/Symfony-coding-standard
+ * @category PHP
+ * @package  PHP_CodeSniffer
+ * @author   Ludovic Fleury <ludo.fleury@gmail.com>
+ * @license  MIT License
+ * @link     https://github.com/ludofleury/Symfony-coding-standard
  */
 
 /**
@@ -16,11 +16,11 @@
  *
  * Throws errors if abstract classes names are not suffixed with "Abstract".
  *
- * @category  PHP
- * @package   PHP_CodeSniffer
- * @author    Ludovic Fleury <ludo.fleury@gmail.com>
- * @license   MIT License
- * @link      https://github.com/ludofleury/Symfony-coding-standard
+ * @category PHP
+ * @package  PHP_CodeSniffer
+ * @author   Ludovic Fleury <ludo.fleury@gmail.com>
+ * @license  MIT License
+ * @link     https://github.com/ludofleury/Symfony-coding-standard
  */
 class Symfony_Sniffs_NamingConventions_AbstractPrefixSniff implements PHP_CodeSniffer_Sniff
 {

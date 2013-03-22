@@ -4,11 +4,11 @@
  *
  * PHP version 5
  *
- * @category  PHP
- * @package   PHP_CodeSniffer
- * @author    Ludovic Fleury <ludo.fleury@gmail.com>
- * @license   MIT License
- * @link      https://github.com/ludofleury/Symfony-coding-standard
+ * @category PHP
+ * @package  PHP_CodeSniffer
+ * @author   Ludovic Fleury <ludo.fleury@gmail.com>
+ * @license  MIT License
+ * @link     https://github.com/ludofleury/Symfony-coding-standard
  */
 
 if (class_exists('PEAR_Sniffs_Functions_FunctionCallSignatureSniff', true) === false) {
@@ -21,11 +21,11 @@ if (class_exists('PEAR_Sniffs_Functions_FunctionCallSignatureSniff', true) === f
  *
  * Allow indented fluent interface
  *
- * @category  PHP
- * @package   PHP_CodeSniffer
- * @author    Ludovic Fleury <ludo.fleury@gmail.com>
- * @license   MIT License
- * @link      https://github.com/ludofleury/Symfony2-coding-standard
+ * @category PHP
+ * @package  PHP_CodeSniffer
+ * @author   Ludovic Fleury <ludo.fleury@gmail.com>
+ * @license  MIT License
+ * @link     https://github.com/ludofleury/Symfony2-coding-standard
  */
 class Symfony_Sniffs_Functions_FunctionCallSignatureSniff extends PEAR_Sniffs_Functions_FunctionCallSignatureSniff
 {
@@ -64,8 +64,7 @@ class Symfony_Sniffs_Functions_FunctionCallSignatureSniff extends PEAR_Sniffs_Fu
             return;
         }
 
-        if ($tokens[$openBracket-1]['code'] === T_STRING &&
-            $tokens[$openBracket-2]['code'] === T_OBJECT_OPERATOR) {
+        if ($tokens[$openBracket-1]['code'] === T_STRING && $tokens[$openBracket-2]['code'] === T_OBJECT_OPERATOR) {
             $previous = $phpcsFile->findPrevious(PHP_CodeSniffer_Tokens::$emptyTokens, ($stackPtr - 3), null, true);
             if ($tokens[$previous]['code'] === T_CLOSE_PARENTHESIS) {
                 // It's a fluent interface chained call

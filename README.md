@@ -57,6 +57,20 @@ Yet, this ruleset rely on CodeSniffer PSR-1 & 2 sniffs and add Symfony standard 
 * "Exception" naming convention isn't enforced (Symfony require Exception suffix)
 * PHPDoc blocks for all classes, methods, and functions isn't enforced at the moment
 
+## Contributing
+
+If you do contribute code to these sniffs, please make sure it conforms to the PEAR coding standard and that the unit tests still pass.
+
+To check the coding standard, run from the Symfony-coding-standard source root:
+
+        phpcs --ignore=Tests --standard=PEAR . -n
+
+The unit-tests are run from within the PHP_CodeSniffer directory
+
+* get the [CodeSniffer repository](https://github.com/squizlabs/PHP_CodeSniffer)
+* symlink, copy or clone this repository at CodeSniffer/Standard/Symfony
+* from the CodeSniffer repository root run `phpunit --filter Symfony_ tests/AllTests.php`
+
 ## Credit
 
 [OpenSky](https://github.com/opensky) for the [Symfony2 coding standard](https://github.com/opensky/Symfony2-coding-standard)
