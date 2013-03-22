@@ -1,0 +1,29 @@
+{
+    "name": "playbloom/php_codesniffer_symfony",
+    "description": "PHP_CodeSniffer ruleset for Symfony PSR coding standards.",
+    "type": "library",
+    "keywords": [
+        "phpcs",
+        "Symfony",
+        "standards",
+        "PSR"
+    ],
+    "homepage": "https://github.com/ludofleury/symfony-coding-standard",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ludovic Fleury",
+            "email": "ludo.fleury@gmail.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/ludofleury/symfony-coding-standard/issues",
+        "source": "https://github.com/ludofleury/symfony-coding-standard"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "*"
+    },
+    "require": {
+        "php": ">=5.4.0"
+    }
+}
