@@ -14,7 +14,7 @@
 /**
  * Symfony_Sniffs_NamingConventions_AbstractPrefixSniff.
  *
- * Throws errors if abstract classes names are not suffixed with "Abstract".
+ * Throws errors if abstract classes names are not prefixed with "Abstract".
  *
  * @category PHP
  * @package  PHP_CodeSniffer
@@ -57,9 +57,15 @@ class Symfony_Sniffs_NamingConventions_AbstractPrefixSniff implements PHP_CodeSn
         $tokens   = $phpcsFile->getTokens();
         $line     = $tokens[$stackPtr]['line'];
 
+        $foundClassToken = false;
+
         while ($tokens[$stackPtr]['line'] == $line) {
-            if ('T_STRING' == $tokens[$stackPtr]['type']) {
-                if (strpos($tokens[$stackPtr]['content'], 'Abstract') !== 0) {
+            if ('T_CLASS' == $tokens[$stackPtr]['type']) {
+                $foundClassToken = true;
+            } elseif ('T_STRING' == $tokens[$stackPtr]['type']) {
+                if ($foundClassToken
+                    && strpos($tokens[$stackPtr]['content'], 'Abstract') !== 0
+                ) {
                     $phpcsFile->addError(
                         'Abstract class is not prefixed with "Abstract"',
                         $stackPtr

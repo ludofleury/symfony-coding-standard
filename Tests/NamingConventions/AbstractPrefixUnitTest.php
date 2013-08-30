@@ -33,11 +33,15 @@ class Symfony_Tests_NamingConventions_AbstractPrefixUnitTest extends AbstractSni
      *
      * @return array(int => int)
      */
-    public function getErrorList()
+    public function getErrorList($testFile='')
     {
-        return array(
-            3 => 1,
-        );
+        if ($testFile === 'AbstractPrefixUnitTest.1.inc') {
+            return array(
+                3 => 1,
+            );
+        } else {
+            return array();
+        }
 
     }
 
@@ -52,6 +56,5 @@ class Symfony_Tests_NamingConventions_AbstractPrefixUnitTest extends AbstractSni
     public function getWarningList()
     {
         return array();
-
     }
 }
