@@ -54,7 +54,6 @@ Yet, this ruleset rely on CodeSniffer PSR-1 & 2 sniffs and add Symfony standard 
 
 ## Known limitations
 
-* "Exception" naming convention isn't enforced (Symfony require Exception suffix)
 * PHPDoc blocks for all classes, methods, and functions isn't enforced at the moment
 
 ## Contributing
