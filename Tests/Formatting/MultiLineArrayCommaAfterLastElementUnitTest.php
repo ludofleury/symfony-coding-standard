@@ -53,6 +53,8 @@ class Symfony_Tests_Formatting_MultiLineArrayCommaAfterLastElementUnitTest exten
                 28 => 1,
                 32 => 1,
                 35 => 1,
+                42 => 1,
+                47 => 1,
             );
         }
 

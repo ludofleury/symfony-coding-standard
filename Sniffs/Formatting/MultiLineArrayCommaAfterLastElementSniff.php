@@ -73,7 +73,9 @@ class Symfony_Sniffs_Formatting_MultiLineArrayCommaAfterLastElementSniff impleme
         }
 
         for ($i = $arrayEnd - 1; $i > $arrayStart; $i--) {
-            if ($tokens[$i]['type'] !== 'T_WHITESPACE') {
+            if ($tokens[$i]['type'] !== 'T_WHITESPACE'
+                && $tokens[$i]['type'] !== 'T_COMMENT'
+            ) {
                 if ($tokens[$i]['type'] !== 'T_COMMA') {
                     $phpcsFile->addError(
                         'Comma missing after last array item',

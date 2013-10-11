@@ -38,3 +38,12 @@ $i = array(
 
 );
 
+$j = array(
+    1, 2 // OHOH
+);
+
+
+$k = array(
+    1, 2
+    /* DOH */
+);
