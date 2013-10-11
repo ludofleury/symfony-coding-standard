@@ -1,13 +1,13 @@
 # Symfony PSR-2 CodeSniffer ruleset <img src="https://secure.travis-ci.org/ludofleury/symfony-coding-standard.png?branch=master" alt="Build Status" style="max-width:100%;">
 
-Provide Symfony PSR CodeSniffer ruleset
+Provides a Symfony PSR CodeSniffer ruleset
 
 * PSR-1 & PSR-2
 * Symfony standard
 * Symfony naming conventions
 
-Strongly inspired by [OpenSky Symfony2 coding standard](https://github.com/opensky/Symfony2-coding-standard) (forked InterfaceSuffixSniff).
-Yet, this ruleset rely on CodeSniffer PSR-1 & 2 sniffs and add Symfony standard & naming conventions. It's also allow chained calls (fluent interface).
+Strongly inspired by the [OpenSky Symfony2 coding standard](https://github.com/opensky/Symfony2-coding-standard) (forked InterfaceSuffixSniff).
+Yet, this ruleset relies on CodeSniffer PSR-1 & 2 sniffs and adds Symfony standards & naming conventions. It also allows chained calls (fluent interface).
 
 ## Installation
 
@@ -25,7 +25,7 @@ Yet, this ruleset rely on CodeSniffer PSR-1 & 2 sniffs and add Symfony standard 
         cd /path/to/pear/PHP/CodeSniffer/Standards
         git clone git://github.com/ludofleury/symfony-coding-standard.git Symfony
 
-4. Set Symfony ruleset as your default coding standard:
+4. Select the Symfony ruleset as your default coding standard:
 
         phpcs --config-set default_standard Symfony
 
@@ -34,7 +34,7 @@ Yet, this ruleset rely on CodeSniffer PSR-1 & 2 sniffs and add Symfony standard 
         phpcs path/to/my/file.php
 
 
-## Pragmatic & opinionated Customisations
+## Pragmatic & opinionated customisations
 
 ### Allows fluent-interface chained calls syntax
 
@@ -54,7 +54,7 @@ Yet, this ruleset rely on CodeSniffer PSR-1 & 2 sniffs and add Symfony standard 
 
 ## Known limitations
 
-* PHPDoc blocks for all classes, methods, and functions isn't enforced at the moment
+* PHPDoc blocks for all classes, methods, and functions aren't enforced at the moment
 
 ## Contributing
 
@@ -76,7 +76,7 @@ The unit-tests are run from within the PHP_CodeSniffer directory
 
 ## Issue
 
-If you spot any missing standard/conventions and don't want to contribute, please open an issue. It will be at least added to this readme.
+If you spot any missing standard/conventions and don't want to contribute, please open an issue. It will at least be added to this readme.
 
 ## Licence
 
