@@ -57,7 +57,6 @@ class Symfony_Sniffs_Formatting_OneSpaceAfterCommaSniff implements PHP_CodeSniff
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
         $tokens       = $phpcsFile->getTokens();
-        $currentToken = $tokens[$stackPtr];
         $nextToken    = $tokens[$stackPtr + 1]; // todo add boundary check
 
         if ($nextToken['type'] === 'T_WHITESPACE'
