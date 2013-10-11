@@ -26,7 +26,7 @@
  * @license  http://spdx.org/licenses/MIT MIT License
  * @link     https://github.com/opensky/Symfony2-coding-standard
  */
-class Symfony_Sniffs_Formatting_MultiLineArrayCommaAfterLastElement implements PHP_CodeSniffer_Sniff
+class Symfony_Sniffs_Formatting_MultiLineArrayCommaAfterLastElementSniff implements PHP_CodeSniffer_Sniff
 {
     /**
      * A list of tokenizers this sniff supports.
@@ -44,7 +44,7 @@ class Symfony_Sniffs_Formatting_MultiLineArrayCommaAfterLastElement implements P
     {
         // T_OPEN_SHORT_ARRAY
         // T_CLOSE_SHORT_ARRAY
-        return array(T_ARRAY);
+        return array(T_ARRAY, T_OPEN_SHORT_ARRAY);
     }
 
     /**
@@ -58,36 +58,36 @@ class Symfony_Sniffs_Formatting_MultiLineArrayCommaAfterLastElement implements P
      */
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
-        $tokens = $phpcsFile->getTokens();
-        $line   = $tokens[$stackPtr]['line'];
+        $tokens       = $phpcsFile->getTokens();
+        $currentToken = $tokens[$stackPtr];
 
-        $arrayStart = $tokens[$stackPtr]['parenthesis_opener'];
-        $arrayEnd   = $tokens[$arrayStart]['parenthesis_closer'];
+        if ($currentToken['type'] === 'T_ARRAY') {
+            $arrayStart = $currentToken['parenthesis_opener'];
+            $arrayEnd   = $currentToken['parenthesis_closer'];
+        } else {
+            $arrayStart = $currentToken['bracket_opener'];
+            $arrayEnd   = $currentToken['bracket_closer'];
+        }
 
         if ($tokens[$arrayStart]['line'] === $tokens[$arrayEnd]['line']) {
             // single line
             return;
         }
 
-        $lastContent = $phpcsFile->findPrevious(T_WHITESPACE, ($arrayEnd - 1), $arrayStart, true);
-        if ($tokens[$lastContent]['line'] !== ($tokens[$arrayEnd]['line'] -1 ) {
-            $phpcsFile->addError(
-                'Closing parenthesis of an array must be on a new line',
-                $arrayEnd,
-                'CloseBraceNewLine'
-            );
+        for ($i = $arrayEnd - 1; $i > $arrayStart; $i--) {
+            if ($tokens[$i]['type'] !== 'T_WHITESPACE') {
+                if ($tokens[$i]['type'] !== 'T_COMMA') {
+                    $phpcsFile->addError(
+                        'Comma missing after last array item',
+                        $i,
+                        'CommaMissing'
+                    );
+                }
+
+                return;
+            }
         }
 
-        // find last Item
-        // Fail if no comma between last item and $arrayEnd
-        
-
-
-        //
-        // $phpcsFile->addError(
-            // 'missing comma after each array item in a multi-line array',
-            // $stackPtr
-        // );
         return;
     }
 }

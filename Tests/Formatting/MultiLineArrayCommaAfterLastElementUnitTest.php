@@ -33,6 +33,8 @@ class Symfony_Tests_Formatting_MultiLineArrayCommaAfterLastElementUnitTest exten
      * The key of the array should represent the line number and the value
      * should represent the number of errors that should occur on that line.
      *
+     * @param string $testFile test file
+     *
      * @return array(int => int)
      */
     public function getErrorList($testFile = '')
@@ -40,12 +42,21 @@ class Symfony_Tests_Formatting_MultiLineArrayCommaAfterLastElementUnitTest exten
         switch ($testFile) {
         case 'MultiLineArrayCommaAfterLastElementUnitTest.1.inc':
             return array();
-        // case 'MultiLineArrayCommaAfterLastElementUnitTest.2.inc':
-        // case 'MultiLineArrayCommaAfterLastElementUnitTest.3.inc':
-        //    return array(7 => 1);
+        case 'MultiLineArrayCommaAfterLastElementUnitTest.2.inc':
+        case 'MultiLineArrayCommaAfterLastElementUnitTest.3.inc':
+            return array(
+                7  => 1,
+                12 => 1,
+                17 => 1,
+                21 => 1,
+                25 => 1,
+                28 => 1,
+                32 => 1,
+                35 => 1,
+            );
         }
 
-        return array();
+        return null;
     }
 
     /**
