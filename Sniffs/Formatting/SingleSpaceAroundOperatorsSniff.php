@@ -82,9 +82,19 @@ class Symfony_Sniffs_Formatting_SingleSpaceAroundOperatorsSniff implements PHP_C
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
         $tokens       = $phpcsFile->getTokens();
-        $nextToken    = $tokens[$stackPtr + 1]; // todo add boundary check
 
-        if ($this->_isPrevTokenOk($tokens, $stackPtr) && $this->_isNextTokenOk($nextToken)) {
+
+        // if "+" or "-" check if an operation is 3 steps ahead.
+        // TODO check for white space between
+        if (($tokens[$stackPtr]['type'] === 'T_MINUS' || $tokens[$stackPtr]['type'] === 'T_PLUS')
+            && in_array($tokens[$stackPtr + 3]['code'], $this->register())
+        ) {
+            return;
+        }
+
+        if ($this->_isPrevTokenOk($tokens, $stackPtr)
+            && $this->_isNextTokenOk($tokens, $stackPtr)
+        ) {
             return;
         }
 
@@ -98,7 +108,8 @@ class Symfony_Sniffs_Formatting_SingleSpaceAroundOperatorsSniff implements PHP_C
     /**
      * check if token is ok for operator
      *
-     * @param array $token token
+     * @param array $tokens   tokens
+     * @param int   $stackPtr stack pointer
      *
      * @return bool
      */
@@ -109,20 +120,26 @@ class Symfony_Sniffs_Formatting_SingleSpaceAroundOperatorsSniff implements PHP_C
 
         return $token['type'] === 'T_WHITESPACE' && $token['content'] === ' '
             || $token['type'] === 'T_COMMENT'
-            || $token['type'] === 'T_WHITESPACE' && $prevToken['type'] === 'T_WHITESPACE' && substr($prevToken['content'], 0, 1) === "\n";;
+            || $token['type'] === 'T_WHITESPACE' && $prevToken['type'] === 'T_WHITESPACE' && substr($prevToken['content'], 0, 1) === "\n";
     }
 
     /**
      * check if token is ok for operator
      *
-     * @param array $token token
+     * @param array $tokens   tokens
+     * @param int   $stackPtr stack pointer
      *
      * @return bool
      */
-    private function _isNextTokenOk($token)
+    private function _isNextTokenOk($tokens, $stackPtr)
     {
+        $token     = $tokens[$stackPtr + 1];     // todo add boundary check
         return $token['type'] === 'T_WHITESPACE' && $token['content'] === ' '
             || $token['type'] === 'T_COMMENT'
-            || $token['type'] === 'T_WHITESPACE' && substr($token['content'], 0, 1) === "\n";
+            || $token['type'] === 'T_WHITESPACE' && substr($token['content'], 0, 1) === "\n"
+            // if "+" or "-" check if an operation is 2 steps before.
+            // TODO check for white space between
+            || ($tokens[$stackPtr]['type'] === 'T_MINUS' || $tokens[$stackPtr]['type'] === 'T_PLUS')
+                && in_array($tokens[$stackPtr - 2]['code'], $this->register());
     }
 }
