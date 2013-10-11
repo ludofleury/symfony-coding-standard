@@ -23,7 +23,7 @@
  * @author    Xaver Loppenstedt <xaver@loppenstedt.de>
  * @copyright 2012 Xaver Loppenstedt, some rights reserved.
  * @license   http://spdx.org/licenses/MIT MIT License
- * @link      https://github.com/opensky/Symfony2-coding-standard
+ * @link      http://symfony.com/doc/current/contributing/code/standards.html
  */
 class Symfony_Tests_Formatting_MultiLineArrayCommaAfterLastElementUnitTest extends AbstractSniffUnitTest
 {

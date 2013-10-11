@@ -14,17 +14,17 @@
  */
 
 /**
- * Symfony2_Sniffs_Formatting_BlankLineBeforeReturnSniff.
+ * Symfony_Sniffs_Formatting_MultiLineArrayCommaAfterLastElementSniff
  *
- * Throws errors if there's no blank line before return statements. Symfony
- * coding standard specifies: "Add a blank line before return statements,
- * unless the return is alone inside a statement-group (like an if statement);".
+ * Throws errors if there's no comma after the last item in a multi-line array.
+ * Symfony coding standard specifies: "Add a comma after each array item in a
+ * multi-line array, even after the last one;".
  *
  * @category PHP
  * @package  PHP_CodeSniffer-Symfony2
  * @author   Xaver Loppenstedt <xaver@loppenstedt.de>
  * @license  http://spdx.org/licenses/MIT MIT License
- * @link     https://github.com/opensky/Symfony2-coding-standard
+ * @link     http://symfony.com/doc/current/contributing/code/standards.html
  */
 class Symfony_Sniffs_Formatting_MultiLineArrayCommaAfterLastElementSniff implements PHP_CodeSniffer_Sniff
 {
