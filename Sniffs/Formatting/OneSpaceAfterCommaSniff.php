@@ -14,11 +14,11 @@
  */
 
 /**
- * Symfony_Sniffs_Formatting_MultiLineArrayCommaAfterLastElementSniff
+ * Symfony_Sniffs_Formatting_OneSpaceAfterCommaSniff
  *
- * Throws errors if there's no comma after the last item in a multi-line array.
- * Symfony coding standard specifies: "Add a comma after each array item in a
- * multi-line array, even after the last one;".
+ * Throws errors if there's no single space after a comma.
+ * Symfony coding standard specifies:
+ * "Add a single space after each comma delimiter;".
  *
  * @category PHP
  * @package  PHP_CodeSniffer-Symfony2
@@ -26,7 +26,7 @@
  * @license  http://spdx.org/licenses/MIT MIT License
  * @link     http://symfony.com/doc/current/contributing/code/standards.html
  */
-class Symfony_Sniffs_Formatting_MultiLineArrayCommaAfterLastElementSniff implements PHP_CodeSniffer_Sniff
+class Symfony_Sniffs_Formatting_OneSpaceAfterCommaSniff implements PHP_CodeSniffer_Sniff
 {
     /**
      * A list of tokenizers this sniff supports.
@@ -42,7 +42,7 @@ class Symfony_Sniffs_Formatting_MultiLineArrayCommaAfterLastElementSniff impleme
      */
     public function register()
     {
-        return array(T_ARRAY, T_OPEN_SHORT_ARRAY);
+        return array(T_COMMA);
     }
 
     /**
@@ -58,33 +58,35 @@ class Symfony_Sniffs_Formatting_MultiLineArrayCommaAfterLastElementSniff impleme
     {
         $tokens       = $phpcsFile->getTokens();
         $currentToken = $tokens[$stackPtr];
+        $nextToken    = $tokens[$stackPtr + 1]; // todo add boundary check
 
-        if ($currentToken['type'] === 'T_ARRAY') {
-            $arrayStart = $currentToken['parenthesis_opener'];
-            $arrayEnd   = $currentToken['parenthesis_closer'];
-        } else {
-            $arrayStart = $currentToken['bracket_opener'];
-            $arrayEnd   = $currentToken['bracket_closer'];
-        }
-
-        if ($tokens[$arrayStart]['line'] === $tokens[$arrayEnd]['line']) {
-            // single line
+        if ($nextToken['type'] === 'T_WHITESPACE'
+            && substr($nextToken['content'], 0, 1) === "\n"
+        ) {
             return;
         }
 
-        for ($i = $arrayEnd - 1; $i > $arrayStart; $i--) {
-            if ($tokens[$i]['type'] !== 'T_WHITESPACE') {
-                if ($tokens[$i]['type'] !== 'T_COMMA') {
-                    $phpcsFile->addError(
-                        'Comma missing after last array item',
-                        $i,
-                        'CommaMissing'
-                    );
-                }
-
-                return;
-            }
+        if ($nextToken['type'] === 'T_WHITESPACE'
+            && $nextToken['content'] === " "
+        ) {
+            return;
         }
+
+        // ignore white spaces before comments
+        if ($nextToken['type'] === 'T_WHITESPACE'
+            && $tokens[$stackPtr + 2]['type'] === 'T_COMMENT'
+        ) {
+            return;
+        }
+
+        if ($nextToken['type'] === 'T_COMMENT') {
+            return;
+        }
+
+        $phpcsFile->addError(
+            'single space after each comma delimiter',
+            $stackPtr + 1
+        );
 
         return;
     }
