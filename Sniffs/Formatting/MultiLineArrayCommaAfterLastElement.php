@@ -18,7 +18,7 @@
  *
  * Throws errors if there's no blank line before return statements. Symfony
  * coding standard specifies: "Add a blank line before return statements,
- * unless the return is alone inside a statement-group (like an if statement);"
+ * unless the return is alone inside a statement-group (like an if statement);".
  *
  * @category PHP
  * @package  PHP_CodeSniffer-Symfony2
