@@ -39,3 +39,25 @@ $a = 'hel'
 //$c = 2 + +2;
 //$c = 2 - -"2b";
 //$c = 2 - -true; // 3 :-)
+
+//array_walk(
+//    $a,
+//    function ($i) use (&$b) {
+//        $i = $b;
+//    }
+//);
+//
+//array_walk(
+//    $a,
+//    function ($i) use (&      $b) {
+//        $i = $b;
+//    }
+//);
+//
+//array_walk(
+//    $a,
+//    function ($i) use (&
+//        $b) {
+//        $i = $b;
+//    }
+//);
