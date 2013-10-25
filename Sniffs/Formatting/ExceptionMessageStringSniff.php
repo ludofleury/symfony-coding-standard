@@ -14,11 +14,11 @@
  */
 
 /**
- * Symfony_Sniffs_Formatting_ClassInstantiationSniff
+ * Symfony_Sniffs_Formatting_ExceptionMessageStringSniff
  *
- * Throws errors if parentheses are missing after class instantiation.
- * Symfony coding standard specifies: "Use parentheses when instantiating
- * classes regardless of the number of arguments the constructor has;".
+ * Throws warning if exception message is concatenated with concat operator.
+ * Symfony coding standard specifies: "Exception message strings should be
+ * concatenated using sprintf.".
  *
  * @category PHP
  * @package  PHP_CodeSniffer-Symfony2
@@ -26,7 +26,7 @@
  * @license  http://spdx.org/licenses/MIT MIT License
  * @link     http://symfony.com/doc/current/contributing/code/standards.html
  */
-class Symfony_Sniffs_Formatting_ClassInstantiationSniff implements PHP_CodeSniffer_Sniff
+class Symfony_Sniffs_Formatting_ExceptionMessageStringSniff implements PHP_CodeSniffer_Sniff
 {
     /**
      * Registers the token types that this sniff wishes to listen to.
@@ -55,13 +55,42 @@ class Symfony_Sniffs_Formatting_ClassInstantiationSniff implements PHP_CodeSniff
         $allowedTokens[] = T_STRING;
         $allowedTokens[] = T_NS_SEPARATOR;
 
-        $next =  $phpcsFile->findNext($allowedTokens, $stackPtr + 1, null, true);
+        $opener =  $phpcsFile->findNext($allowedTokens, $stackPtr + 1, null, true);
 
-        if (($next === false) || ($tokens[$next]['type'] !== 'T_OPEN_PARENTHESIS')) {
-            $phpcsFile->addError(
-                'parenthesis missing after class name',
-                $stackPtr
-            );
+        if ($opener === false
+            || ($tokens[$opener]['type'] !== 'T_OPEN_PARENTHESIS')
+        ) {
+            return;
         }
+
+        $prev = $phpcsFile->findPrevious(
+            PHP_CodeSniffer_Tokens::$emptyTokens,
+            $opener - 1,
+            null,
+            true
+        );
+
+        if ($prev === false ) {
+            return;
+        }
+
+        if ($tokens[$prev]['type'] !== 'T_STRING'
+            || substr($tokens[$prev]['content'], -9) !== 'Exception'
+        ) {
+            return;
+        }
+
+        $closer = $tokens[$opener]['parenthesis_closer'];
+
+        $concat = $phpcsFile->findNext(T_STRING_CONCAT, $opener + 1, $closer, false);
+
+        if ($concat === false) {
+            return;
+        }
+
+        $phpcsFile->addWarning(
+            'Use sprintf to concat exception message',
+            $stackPtr
+        );
     }
 }
