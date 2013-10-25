@@ -54,6 +54,7 @@ class Symfony_Sniffs_Formatting_ClassInstantiationSniff implements PHP_CodeSniff
 
         $allowedTokens   = PHP_CodeSniffer_Tokens::$emptyTokens;
         $allowedTokens[] = T_STRING;
+        $allowedTokens[] = T_NS_SEPARATOR;
 
         $next =  $phpcsFile->findNext($allowedTokens, $stackPtr + 1, null, true);
 

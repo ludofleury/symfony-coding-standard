@@ -44,6 +44,7 @@ class Symfony_Tests_Formatting_ClassInstantiationUnitTest extends AbstractSniffU
             10 => 1,
             11 => 1,
             12 => 1,
+            16 => 1,
         );
     }
 
