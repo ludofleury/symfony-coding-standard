@@ -54,7 +54,7 @@ Yet, this ruleset relies on CodeSniffer PSR-1 & 2 sniffs and adds Symfony standa
 
 ## Known limitations
 
-* PHPDoc blocks for all classes, methods, and functions aren't enforced at the moment
+* functions aren't enforced at the moment
 
 ## Contributing
 
