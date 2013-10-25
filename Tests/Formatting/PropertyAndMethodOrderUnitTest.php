@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Symfony2-coding-standard (phpcs standard)
  *
@@ -13,7 +14,7 @@
  */
 
 /**
- * Unit test class for the MultiLineArrayCommaAfterLastElement sniff.
+ * Unit test class for the PropertyAndMethodOrder sniff.
  *
  * A sniff unit test checks a .inc file for expected violations of a single
  * coding standard. Expected errors and warnings are stored in this class.
@@ -25,7 +26,7 @@
  * @license   http://spdx.org/licenses/MIT MIT License
  * @link      http://symfony.com/doc/current/contributing/code/standards.html
  */
-class Symfony_Tests_Formatting_MultiLineArrayCommaAfterLastElementUnitTest extends AbstractSniffUnitTest
+class Symfony_Tests_Formatting_PropertyAndMethodOrderUnitTest extends AbstractSniffUnitTest
 {
     /**
      * Returns the lines where errors should occur.
@@ -37,28 +38,34 @@ class Symfony_Tests_Formatting_MultiLineArrayCommaAfterLastElementUnitTest exten
      *
      * @return array(int => int)
      */
-    public function getErrorList($testFile = '')
+    protected function getErrorList($testFile = '')
     {
         switch ($testFile) {
-        case 'MultiLineArrayCommaAfterLastElementUnitTest.1.inc':
+        case 'PropertyAndMethodOrderUnitTest.pass.1.inc':
             return array();
-        case 'MultiLineArrayCommaAfterLastElementUnitTest.2.inc':
-        case 'MultiLineArrayCommaAfterLastElementUnitTest.3.inc':
+        case 'PropertyAndMethodOrderUnitTest.fail.1.inc':
             return array(
-                7  => 1,
-                12 => 1,
+                11 => 1,
+                18 => 1,
+                22 => 1,
+                23 => 1,
+                25 => 1,
+                27 => 1,
+                29 => 1
+            );
+        case 'PropertyAndMethodOrderUnitTest.fail.2.inc':
+            return array(
+                13 => 1,
                 17 => 1,
                 21 => 1,
-                25 => 1,
-                28 => 1,
-                32 => 1,
-                35 => 1,
-                42 => 1,
-                47 => 1,
+                22 => 1,
+                24 => 1,
+                26 => 1
             );
         }
 
         return null;
+
     }
 
     /**
@@ -69,8 +76,9 @@ class Symfony_Tests_Formatting_MultiLineArrayCommaAfterLastElementUnitTest exten
      *
      * @return array(int => int)
      */
-    public function getWarningList()
+    protected function getWarningList()
     {
         return array();
     }
 }
+ 
