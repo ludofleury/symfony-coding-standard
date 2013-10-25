@@ -52,10 +52,11 @@ class Symfony_Tests_Formatting_ExceptionMessageStringUnitTest extends AbstractSn
     protected function getWarningList()
     {
         return array(
-            6 => 1,
-            7 => 1,
-            8 => 1,
-            9 => 1,
+            6  => 1,
+            7  => 1,
+            8  => 1,
+            9  => 1,
+            28 => 1,
         );
     }
 }

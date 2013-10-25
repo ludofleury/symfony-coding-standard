@@ -17,4 +17,20 @@ $e = new Exception(
     0
 );
 $e = new ExceptionHandler('a' . 'b'); // this is not an exception
-
+$e = new Exception(
+    sprintf(
+        'This is a epic long exception message, because of %d errors occured in %s while doing %s',
+        $number,
+        $class,
+        $method
+    )
+);
+throw new Exception(
+    sprintf(
+        'This is a epic long exception message, because of %d errors occured'
+        . 'in %s while doing %s',
+        $number,
+        $class . 'x',
+        $method
+    )
+);
