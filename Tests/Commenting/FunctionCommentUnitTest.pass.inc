@@ -27,4 +27,15 @@ class Pass
     public function foobar() {
         return true;
     }
+
+    /**
+     * do barfoo
+     */
+    public function barfoo() {
+        if (1 === 1) {
+            return;
+        }
+
+        return;
+    }
 }
