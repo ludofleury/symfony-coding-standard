@@ -20,6 +20,7 @@
  * @category PHP
  * @package  PHP_CodeSniffer
  * @author   Xaver Loppenstedt <xaver@loppenstedt.de>
+ * @author   Steffen Ritter <steffenritter1@gmail.com>
  * @license  MIT License
  * @link     https://github.com/ludofleury/Symfony-coding-standard
  */

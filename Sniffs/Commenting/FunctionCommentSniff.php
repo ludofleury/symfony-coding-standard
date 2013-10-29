@@ -27,6 +27,7 @@
  * @package  PHP_CodeSniffer
  * @author   Felix Brandt <mail@felixbrandt.de>
  * @author   Xaver Loppenstedt <xaver@loppenstedt.de>
+ * @author   Steffen Ritter <steffenritter1@gmail.com>
  * @license  http://spdx.org/licenses/BSD-3-Clause BSD 3-clause "New" or "Revised" License
  * @link     http://pear.php.net/package/PHP_CodeSniffer
  */

@@ -23,6 +23,7 @@
  * @category PHP
  * @package  PHP_CodeSniffer-Symfony2
  * @author   Xaver Loppenstedt <xaver@loppenstedt.de>
+ * @author   Steffen Ritter <steffenritter1@gmail.com>
  * @license  http://spdx.org/licenses/MIT MIT License
  * @link     http://symfony.com/doc/current/contributing/code/standards.html
  */

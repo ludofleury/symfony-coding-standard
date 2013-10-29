@@ -33,6 +33,7 @@
  * @author    Greg Sherwood <gsherwood@squiz.net>
  * @author    Marc McIntyre <mmcintyre@squiz.net>
  * @author    Xaver Loppenstedt <xaver@loppenstedt.de>
+ * @author    Steffen Ritter <steffenritter1@gmail.com>
  * @copyright 2006 Squiz Pty Ltd (ABN 77 084 670 600)
  * @license   http://matrix.squiz.net/developer/tools/php_cs/licence BSD Licence
  * @version   Release: 1.3.0RC2
