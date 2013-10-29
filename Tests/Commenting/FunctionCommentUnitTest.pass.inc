@@ -5,7 +5,8 @@ class Pass
     /**
      * do foo
      */
-    public function foo() {
+    public function foo()
+    {
 
     }
 
@@ -15,7 +16,8 @@ class Pass
      * @param string $a string to add
      * @param array  $b array
      */
-    public function bar($a, array $b) {
+    public function bar($a, array $b)
+    {
 
 
     }
@@ -24,18 +26,45 @@ class Pass
      *
      * @return bool
      */
-    public function foobar() {
+    public function foobar()
+    {
         return true;
     }
 
     /**
      * do barfoo
      */
-    public function barfoo() {
+    public function barfoo()
+    {
         if (1 === 1) {
             return;
         }
 
         return;
+    }
+
+    /**
+     * write stuff info
+     *
+     * @param StuffInfo $info
+     */
+    public function writeStuffInfo(StuffInfo $info)
+    {
+    }
+
+    /**
+     * @param array $info
+     */
+    private function writeInfo(array $info)
+    {
+
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValue()
+    {
+        return $value;
     }
 }

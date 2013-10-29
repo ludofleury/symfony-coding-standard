@@ -2,7 +2,8 @@
 
 class Fail
 {
-    public function foo() {
+    public function foo()
+    {
 
     }
 
@@ -10,13 +11,15 @@ class Fail
      * @param       $a
      * @param array $b
      */
-    public function bar($a, array $b) {
+    public function bar($a, array $b)
+    {
     }
 
     /**
      * do foo
      */
-    public function foobar() {
+    public function foobar()
+    {
         return true;
     }
 
@@ -25,6 +28,7 @@ class Fail
      *
      * @return void
      */
-    public function barfoo() {
+    public function barfoo()
+    {
     }
 }

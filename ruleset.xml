@@ -12,6 +12,14 @@
   <exclude name="PEAR.Functions.FunctionCallSignature"/>
  </rule>
 
+<rule ref="Symfony.Commenting.FunctionComment.MissingParamComment">
+<severity>0</severity>
+</rule>
+
+<rule ref="Symfony.Commenting.FunctionComment.SpacingBeforeTags">
+    <severity>0</severity>
+</rule>
+
 <!-- Allow fluent interface style with the semi-colon on it's own line -->
  <rule ref="Symfony.Functions.FunctionCallSignature">
   <properties>
