@@ -89,7 +89,15 @@ class Symfony_Sniffs_Commenting_FunctionCommentSniff extends PEAR_Sniffs_Comment
             // iterate over all return statements of this function,
             // run the check on the first which is not only 'return;'
             $hasReturn = false;
+            $end = $tokens[$funcPtr]['scope_opener'] + 1;
             while ($returnToken = $this->currentFile->findNext(T_RETURN, $start, $tokens[$funcPtr]['scope_closer'])) {
+                $closurePtr = $this->currentFile->findPrevious(T_CLOSURE, $returnToken -1, $end);
+                if ($closurePtr) {
+                    $start = $tokens[$closurePtr]['scope_closer'] + 1;
+                    $end   = $start;
+                    continue;
+                }
+
                 $hasReturn = true;
 
                 if ($this->isMatchingReturn($tokens, $returnToken)) {
