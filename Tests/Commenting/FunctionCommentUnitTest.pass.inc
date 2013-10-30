@@ -67,4 +67,45 @@ class Pass
     {
         return $value;
     }
+
+    /**
+     * nice
+     */
+    public function arrayStuff()
+    {
+        array_map(
+            function ($v) {
+                return $v;
+            },
+            array(1, 2, 3)
+        );
+    }
+
+    /**
+     * @return array
+     */
+    public function arrayStuff2()
+    {
+        array_map(
+            function ($v) {
+                return $v;
+            },
+            array(1, 2, 3)
+        );
+
+        return [3, 2, 1];
+    }
+
+    /**
+     * @return array
+     */
+    public function arrayStuff2()
+    {
+        return array_map(
+            function ($v) {
+                return $v;
+            },
+            array(1, 2, 3)
+        );
+    }
 }

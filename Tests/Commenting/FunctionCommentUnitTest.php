@@ -48,6 +48,8 @@ class Symfony_Tests_Commenting_FunctionCommentUnitTest extends AbstractSniffUnit
                 12 => 1,
                 20 => 1,
                 29 => 1,
+                37 => 1,
+                52 => 1,
             );
         }
 

@@ -31,4 +31,32 @@ class Fail
     public function barfoo()
     {
     }
+
+    /**
+     * missing
+     */
+    public function arrayStuff2()
+    {
+        array_map(
+            function ($v) {
+                return $v;
+            },
+            array(1, 2, 3)
+        );
+
+        return [3, 2, 1];
+    }
+
+    /**
+     * missing
+     */
+    public function arrayStuff2()
+    {
+        return array_map(
+            function ($v) {
+                return $v;
+            },
+            array(1, 2, 3)
+        );
+    }
 }
