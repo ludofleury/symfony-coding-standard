@@ -62,9 +62,9 @@ class Symfony_Sniffs_Formatting_PropertyAndMethodOrderSniff extends PHP_CodeSnif
      * @var array
      */
     private $_allowedVisibilities = array(
-        'public'    => ['public', 'protected', 'private'],
-        'protected' => ['protected', 'private'],
-        'private'   => ['private'],
+        'public'    => array('public', 'protected', 'private'),
+        'protected' => array('protected', 'private'),
+        'private'   => array('private'),
     );
 
     /**
