@@ -12,18 +12,18 @@
  */
 
 /**
- * Unit test class for the AbstractPrefix sniff.
+ * Unit test class for the ExceptionSuffix sniff.
  *
  * A sniff unit test checks a .inc file for expected violations of a single
  * coding standard. Expected errors and warnings are stored in this class.
  *
  * @category PHP
  * @package  PHP_CodeSniffer
- * @author   Ludovic Fleury <ludo.fleury@gmail.com>
+ * @author   Xaver Loppenstedt <xaver@loppenstedt.de>
  * @license  MIT License
  * @link     https://github.com/ludofleury/Symfony-coding-standard
  */
-class Symfony_Tests_NamingConventions_AbstractPrefixUnitTest extends AbstractSniffUnitTest
+class Symfony_Tests_NamingConventions_ExceptionSuffixUnitTest extends AbstractSniffUnitTest
 {
     /**
      * Returns the lines where errors should occur.
@@ -33,15 +33,15 @@ class Symfony_Tests_NamingConventions_AbstractPrefixUnitTest extends AbstractSni
      *
      * @return array(int => int)
      */
-    public function getErrorList($testFile='')
+    public function getErrorList($testFile = '')
     {
-        if ($testFile === 'AbstractPrefixUnitTest.1.inc') {
-            return array(
-                3 => 1,
-            );
-        } else {
+        if ($testFile === 'ExceptionSuffixUnitTest.3.inc') {
             return array();
         }
+
+        return array(
+            4 => 1,
+        );
 
     }
 
@@ -56,5 +56,6 @@ class Symfony_Tests_NamingConventions_AbstractPrefixUnitTest extends AbstractSni
     public function getWarningList()
     {
         return array();
+
     }
 }

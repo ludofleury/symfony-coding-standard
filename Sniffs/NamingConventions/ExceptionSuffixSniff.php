@@ -12,17 +12,17 @@
  */
 
 /**
- * Symfony_Sniffs_NamingConventions_AbstractPrefixSniff.
+ * Symfony_Sniffs_NamingConventions_ExceptionSuffixSniff.
  *
- * Throws errors if abstract classes names are not prefixed with "Abstract".
+ * Throws errors if exception names are not suffixed with "Exception".
  *
  * @category PHP
  * @package  PHP_CodeSniffer
- * @author   Ludovic Fleury <ludo.fleury@gmail.com>
+ * @author   Xaver Loppenstedt <xaver@loppenstedt.de>
  * @license  MIT License
  * @link     https://github.com/ludofleury/Symfony-coding-standard
  */
-class Symfony_Sniffs_NamingConventions_AbstractPrefixSniff implements PHP_CodeSniffer_Sniff
+class Symfony_Sniffs_NamingConventions_ExceptionSuffixSniff implements PHP_CodeSniffer_Sniff
 {
     /**
      * A list of tokenizers this sniff supports.
@@ -40,7 +40,7 @@ class Symfony_Sniffs_NamingConventions_AbstractPrefixSniff implements PHP_CodeSn
      */
     public function register()
     {
-        return array(T_ABSTRACT);
+        return array(T_EXTENDS);
     }
 
     /**
@@ -57,23 +57,36 @@ class Symfony_Sniffs_NamingConventions_AbstractPrefixSniff implements PHP_CodeSn
         $tokens   = $phpcsFile->getTokens();
         $line     = $tokens[$stackPtr]['line'];
 
-        $foundClassToken = false;
+        $originalStackPtr = $stackPtr;
+        $extendsException = false;
 
         while ($tokens[$stackPtr]['line'] == $line) {
-            if ('T_CLASS' == $tokens[$stackPtr]['type']) {
-                $foundClassToken = true;
-            } elseif ('T_STRING' == $tokens[$stackPtr]['type']) {
-                if ($foundClassToken
-                    && strpos($tokens[$stackPtr]['content'], 'Abstract') !== 0
-                ) {
-                    $phpcsFile->addError(
-                        'Abstract class is not prefixed with "Abstract"',
-                        $stackPtr
-                    );
+            if ('T_STRING' == $tokens[$stackPtr]['type']) {
+                if (substr($tokens[$stackPtr]['content'], -9) == 'Exception') {
+                    $extendsException = true;
                 }
                 break;
             }
             $stackPtr++;
+        }
+
+        if ($extendsException === false) {
+            return;
+        }
+
+        $stackPtr = $originalStackPtr;
+
+        while ($tokens[$stackPtr]['line'] == $line) {
+            if ('T_STRING' == $tokens[$stackPtr]['type']) {
+                if (substr($tokens[$stackPtr]['content'], -9) != 'Exception') {
+                     $phpcsFile->addError(
+                         'Exception name is not suffixed with "Exception"',
+                         $stackPtr
+                     );
+                }
+                break;
+            }
+            $stackPtr--;
         }
 
         return;
