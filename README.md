@@ -1,4 +1,4 @@
-# Symfony PSR-2 CodeSniffer ruleset <img src="https://secure.travis-ci.org/ludofleury/symfony-coding-standard.png?branch=master" alt="Build Status" style="max-width:100%;">
+# Symfony PSR-2 CodeSniffer ruleset [![Build Status](https://travis-ci.org/ludofleury/symfony-coding-standard.svg?branch=master)](https://travis-ci.org/ludofleury/symfony-coding-standard)
 
 Provide Symfony PSR CodeSniffer ruleset
 
